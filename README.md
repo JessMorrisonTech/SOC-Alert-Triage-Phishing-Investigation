@@ -115,15 +115,14 @@ Incident escalated for further investigation and containment
 I rushed the ending of an investigation due to time concerns from pivoting from email alert and logs to firewall logs and missed additional host-level indicators.
 
 **Takeaway:**  
-Speed matters, but thorough investigation prevents missed compromises.
+Speed matters, but thorough investigation prevents missed compromises. Spending time to confirm one alert as a false positive despite some indicators of suspicion should not lead the next investigation to be rushed. Finding one or two indicators of compromise does not mean to stop searching for the next. 
 
 ---
 
 ### 2. Escalation Is Impact-Based
 Not all phishing alerts warrant escalation.
 
-- Blocked link → only documentation required
-- Allowed access → escalation required
+- Blocked web access only documentation required for the incident, but an allowed access to a web page requires us to escalate to dig deeper into the host machine to investigate further. 
 
 **Takeaway:**  
 Escalate based on exposure and impact, not alert type alone.
@@ -131,7 +130,11 @@ Escalate based on exposure and impact, not alert type alone.
 ---
 
 ### 3. Correlation Is Critical
-The most valuable findings came from connecting multiple alerts across data sources rather than investigating alerts in isolation. Linking the Email alert and logs to firewall logs to understand the exact events that occurred proved vital. Additional missed alerts also would have come from identifying Host-level/end point detection logs. 
+- Investigation relied heavily on network-centric logs, including email alerts and firewall web access logs, to trace the attack progression.  
+- Host-centric logs, which would have shown the endpoint compromise more clearly, were not fully leveraged, leading to gaps in understanding the full scope of the attack.  
+
+**Takeaway:**  
+This incident reinforced the importance of correlating network and host-level data. While network logs can reveal attack vectors and suspicious communications, host logs provide the definitive evidence of compromise. Missing these indicators early in the investigation could have delayed detection of the attack's impact. Going forward, integrating both types of telemetry from the start ensures a more complete and accurate incident assessment.
 
 ---
 
@@ -171,6 +174,3 @@ This simulation reflects real SOC analyst responsibilities, including:
 - Time pressure
 - Multiple concurrent alerts
 - Judgment-based escalation decisions
-
-It emphasizes analytical thinking and investigative discipline over tool-specific mechanics.
-
